@@ -1,0 +1,27 @@
+# Node
+node_modules/
+
+# PHP
+/vendor/
+
+# Environment
+.env
+
+# Logs
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Docker
+**/data/
+
+# Misc
+.idea/
+.vscode/
+
+# Build
+/dist/
+/build/
+
