@@ -1,35 +1,21 @@
 <?php
-// public/setup_db.php
-
-// Включаем отображение всех ошибок для отладки
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
-
 header('Content-Type: text/plain');
-
-// --- Параметры подключения к БД ---
 $dbHost = 'mysql';
 $dbName = 'poker';
 $dbUser = 'pokeruser';
 $dbPass = 'pokerpass';
-$dbRootPass = 'rootpassword'; // Пароль root для создания БД
-
+$dbRootPass = 'rootpassword';
 try {
-    // Сначала подключаемся к MySQL серверу без выбора конкретной БД
     $pdo = new PDO("mysql:host=$dbHost", 'root', $dbRootPass);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-    // Создаем БД, если она не существует
     $pdo->exec("CREATE DATABASE IF NOT EXISTS `$dbName` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;");
     $pdo->exec("USE `$dbName`;");
-
     echo "[SUCCESS] Database '$dbName' is ready.\n";
-
 } catch (PDOException $e) {
     die("[ERROR] DB Connection Failed: " . $e->getMessage());
 }
-
-// --- SQL для создания таблиц ---
 $sql = "
 CREATE TABLE IF NOT EXISTS `rooms` (
   `id` varchar(36) NOT NULL,
@@ -77,12 +63,9 @@ CREATE TABLE IF NOT EXISTS `votes` (
   CONSTRAINT `votes_task_id_foreign` FOREIGN KEY (`task_id`) REFERENCES `tasks` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 ";
-
 try {
-    // Выполняем весь SQL-блок
     $pdo->exec($sql);
     echo "[SUCCESS] All tables created successfully!\n";
 } catch (PDOException $e) {
     die("[ERROR] Table creation failed: " . $e->getMessage());
 }
-

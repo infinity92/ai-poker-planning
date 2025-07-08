@@ -1,6 +1,4 @@
 <?php
-// public/helpers.php
-
 function getPDO() {
     static $pdo = null;
     if ($pdo === null) {
@@ -8,7 +6,6 @@ function getPDO() {
         $dbName = 'poker';
         $dbUser = 'pokeruser';
         $dbPass = 'pokerpass';
-
         try {
             $pdo = new PDO("mysql:host=$dbHost;dbname=$dbName;charset=utf8mb4", $dbUser, $dbPass);
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
