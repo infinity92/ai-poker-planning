@@ -34,6 +34,8 @@ For more details, see the `docker/` directory and configuration files.
 
 The project uses MySQL as the database. All required environment variables are set in the `.env` file. After starting the containers, run the setup_db.php script to initialize the database.
 
+In the file `public/setup_db.php`, make sure to set the actual values for database connection parameters (`$dbHost`, `$dbName`, `$dbUser`, `$dbPass`, `$dbRootPass`) according to your environment or the values specified in your `.env` file or Docker configuration.
+
 ## Environment Variables
 
 The `.env` file should contain:
