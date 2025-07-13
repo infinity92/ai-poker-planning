@@ -1,5 +1,6 @@
 {
   "require": {
-    "ext-redis": "*"
+    "ext-redis": "*",
+    "vlucas/phpdotenv": "^5.6"
   }
 }
