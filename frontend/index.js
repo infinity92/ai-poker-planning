@@ -1,4 +1,4 @@
-import '../styles.css';
+import './styles.css';
 
 let app;
 const params = new URLSearchParams(window.location.search);
